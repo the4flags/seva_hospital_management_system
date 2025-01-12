@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -5,7 +7,8 @@ const patient = express.Router();
 
 const db = require('../../../utils/db');
 
-process.env.SECRET_KEY = 'Arijit';
+process.env.SECRET_KEY // This is automatically populated from the .env file
+
 
 patient.post('/register', (req, res) => {
 

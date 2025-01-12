@@ -1,7 +1,7 @@
-SELECT * FROM HospitalManagementSystem.superAdmin;
+SELECT * FROM hospitalmanagementsystem.superAdmin;
 
-SELECT * FROM HospitalManagementSystem.admin;
+SELECT * FROM hospitalmanagementsystem.admin;
 
-SELECT * FROM HospitalManagementSystem.patient;
+SELECT * FROM hospitalmanagementsystem.patient;
 
-SELECT * FROM HospitalManagementSystem.doctors;
+SELECT * FROM hospitalmanagementsystem.doctors;

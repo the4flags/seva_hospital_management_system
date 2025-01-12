@@ -1,60 +1,30 @@
-import React, { Component } from 'react';
-import Carousel from 'react-bootstrap/Carousel';
-import Card from 'react-bootstrap/Card';
-import Img1 from '../photos/doctor4.jpg'
-import Img2 from '../photos/doctor2.jpg'
-import Img3 from '../photos/doctor6.jpg'
+import React from 'react';
 
-class OurDoctors extends Component {
-    
-    render() { 
-        return (     <div>
-            <Carousel className ="container" style={{paddingLeft:100 ,paddingRight:100}}>
-                <Carousel.Item  >
-                <Card>
-                <Card.Img variant="top" height="500" src={Img1} />
-                <Card.Body>
-                  <Card.Title className = "text-warning">Dr. Debashish Majumder</Card.Title>
-                  <Card.Subtitle>Oncologist</Card.Subtitle>
-                  <Card.Text>
-                    Specialist in chemotherapy.
-                  </Card.Text>
-                </Card.Body>
-                
-              </Card>
-                </Carousel.Item>
-                <Carousel.Item>
-                <Card>
-                <Card.Img variant="top" height="300" src={Img2} />
-                <Card.Body>
-                  <Card.Title className = "text-warning">Dr. Disha Dey</Card.Title>
-                  <Card.Subtitle>Psychiatrist</Card.Subtitle>
-                  <Card.Text>
-                    Specialist in curing schezophrania.
-                  </Card.Text>
-                </Card.Body>
-                
-              </Card>
-                </Carousel.Item>
-                <Carousel.Item >
-                <Card>
-                <Card.Img variant="top" height="300" src={Img3} />
-                <Card.Body>
-                  <Card.Title className = "text-warning">Dr. Silajit Deb</Card.Title>
-                  <Card.Subtitle>Heart Specialist</Card.Subtitle>
-                  <Card.Text>
-                    Specialist in treatment of Heart Strokes.
-                  </Card.Text>
-                </Card.Body>
-                
-              </Card>
-                </Carousel.Item>
-                </Carousel>
-                <br/>
-                <br/>
-                
-                </div> );
-    }
-}
- 
+const doctors = [
+  { name: "Dr. Debashish Majumder", specialty: "Oncologist", description: "Specialist in chemotherapy." },
+  { name: "Dr. Disha Dey", specialty: "Psychiatrist", description: "Specialist in curing schizophrenia." },
+  { name: "Dr. Silajit Deb", specialty: "Heart Specialist", description: "Specialist in treatment of heart strokes." },
+];
+
+const OurDoctors = () => {
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-6 py-10">
+      {doctors.map((doctor, index) => (
+        <div key={index} className="bg-white shadow-md rounded-lg p-4">
+          <img
+            src={`doctor${index + 1}.jpg`}
+            alt={doctor.name}
+            className="w-full h-40 object-cover rounded-t-md"
+          />
+          <div className="mt-4">
+            <h3 className="text-lg font-bold text-blue-600">{doctor.name}</h3>
+            <p className="text-gray-700">{doctor.specialty}</p>
+            <p className="text-sm text-gray-500">{doctor.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
 export default OurDoctors;

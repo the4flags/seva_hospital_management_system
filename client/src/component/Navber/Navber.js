@@ -1,74 +1,29 @@
-import React, { Component } from 'react';
-import classnames from 'classnames'
-import './Navber.css';
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import React from 'react';
 
-
-
-class Navber extends Component {
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      prevScrollpos: window.pageYOffset,
-      visible: true
-    };
-  }
-
-  // Adds an event listener when the component is mount.
-  componentDidMount() {
-    window.addEventListener("scroll", this.handleScroll);
-  }
-
-  // Remove the event listener when the component is unmount.
-  componentWillUnmount() {
-    window.removeEventListener("scroll", this.handleScroll);
-  }
-
-  // Hide or show the menu.
-  handleScroll = () => {
-    const { prevScrollpos } = this.state;
-
-    const currentScrollPos = window.pageYOffset;
-    const visible = prevScrollpos > currentScrollPos;
-
-    this.setState({
-      prevScrollpos: currentScrollPos,
-      visible
-    });
-  };
-
-    render() { 
-        return ( 
-            <div>
-                <Navbar className={classnames("navbar", {
-                    "navbar--hidden": !this.state.visible
-                  })} bg="primary" text="white" var expand="lg">
-                <Navbar.Brand style={{color:"white"}}>Lifescape Hospital Ltd</Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="ml-auto">
-                    <Nav.Link className="text-white" href="/">Home</Nav.Link>
-                    <Nav.Link className="text-white" href="/about">About</Nav.Link>                    
-                    <Nav.Link className="text-white" href="/gallery">Gallery</Nav.Link>
-                    <Nav.Link className="text-white" href="/contact">Contact Us</Nav.Link>
-                    <Nav.Link className="text-white" href="/regPatient">Patient Register</Nav.Link>
-                    <NavDropdown title="Login" id="basic-nav-dropdown" className="mr-5">
-                        <NavDropdown.Item href="/patient/login">Patient Login</NavDropdown.Item>
-                        <NavDropdown.Item href="/doctors/login">Doctor Login</NavDropdown.Item>
-                        <NavDropdown.Item href="/employee/login">Employee Login</NavDropdown.Item>
-                        <NavDropdown.Item href="/administrator/login">Admin Login</NavDropdown.Item>
-                    </NavDropdown>
-                    </Nav>
-                    
-                </Navbar.Collapse>
-                </Navbar>
+const Navbar = () => {
+  return (
+    <div className="bg-blue-600 text-white shadow-md sticky top-0 z-50">
+      <div className="container mx-auto flex justify-between items-center py-4 px-6">
+        <h1 className="text-2xl font-bold">Lifescape Hospital Ltd</h1>
+        <nav className="flex space-x-6">
+          <a href="/" className="hover:text-gray-300">Home</a>
+          <a href="/about" className="hover:text-gray-300">About</a>
+          <a href="/gallery" className="hover:text-gray-300">Gallery</a>
+          <a href="/contact" className="hover:text-gray-300">Contact Us</a>
+          <a href="/regPatient" className="hover:text-gray-300">Patient Register</a>
+          <div className="relative group">
+            <button className="hover:text-gray-300">Login</button>
+            <div className="absolute bg-white text-gray-800 shadow-md rounded hidden group-hover:block mt-2">
+              <a href="/patient/login" className="block px-4 py-2 hover:bg-gray-200">Patient Login</a>
+              <a href="/doctors/login" className="block px-4 py-2 hover:bg-gray-200">Doctor Login</a>
+              <a href="/employee/login" className="block px-4 py-2 hover:bg-gray-200">Employee Login</a>
+              <a href="/administrator/login" className="block px-4 py-2 hover:bg-gray-200">Admin Login</a>
             </div>
-        );
-    }
-}
- 
-export default Navber;
+          </div>
+        </nav>
+      </div>
+    </div>
+  );
+};
+
+export default Navbar;
